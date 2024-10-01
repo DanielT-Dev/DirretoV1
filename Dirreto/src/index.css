@@ -4,7 +4,7 @@ body
   margin: 0;
   font-family: "Roboto", sans-serif;
 }
-.welcome_box h1
+:root 
 {
-  text-align: center;
+  --color1: #7E60BF;
 }
