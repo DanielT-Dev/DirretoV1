@@ -1,7 +1,7 @@
 import React from 'react'
 import "../styles/Auth.css"
 
-const SignUp = () => {
+const LogIn = () => {
   return (
     <div className="sign_up_container">
         <div className="sign_up_form">
@@ -30,4 +30,4 @@ const SignUp = () => {
   )
 }
 
-export default SignUp
+export default LogIn
