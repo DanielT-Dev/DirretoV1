@@ -10,7 +10,7 @@
         height: 100vh;
         background-color: rgb(238, 248, 243);
     }
-    .navigation_container 
+    .home_container .navigation_container 
     {
         display: flex;
         flex-direction: row;
@@ -51,24 +51,87 @@
     }
     .projects_container h1 
     {
-        padding-left: 1.5vw;
-        text-align: left;
+        text-align: center;
         font-size: 1.5vw;
+    }
+    .projects_container input 
+    {
+        margin-left: 9.5%;
+        margin-bottom: 2vh;
+        width: 75%;
+        padding-left: 2vh;
+        padding-top: 1.5vh;
+        padding-bottom: 1.5vh;
+        background-color: rgb(245, 245, 250);
+        border: none;
+        border-radius: 10px;
+        font-size: 2vh;
+    }
+    .projects_container button 
+    {
+        display: flex;
+        flex-direction: row;
+        margin-left: 9.5%;
+        margin-top: 0vh;
+        margin-bottom: 5vh;
+        width: 80.5%;
+        padding-left: 1vh;
+        padding-top: 1.5vh;
+        padding-bottom: 1.5vh;
+        background-color: rgb(5, 140, 97);
+        color: white;
+        border: none;
+        border-radius: 10px;
+        font-size: 2vh;
+        cursor: pointer;
+        justify-content: center;
+        align-items: center;
+    }
+    .projects_container button:hover 
+    {
+        background-color: rgb(0, 115, 80)
+    }
+    .projects_container button img 
+    {
+        width: 1.3vw;
+        margin-right: 0.5vw;
+        margin-top: -0.3vh;
+    }
+    .projects_container p 
+    {
+        text-align: center;
+        font-size: 1.5vw;
+        font-weight: 600;
+    }
+    .projects_container div 
+    {
+        margin-bottom: -3vh;
+    }
+    .projects_button 
+    {
+        margin-left: 1vw !important;
+        padding-top: 0.8vh !important;
+        padding-bottom: 0.8vh !important;
+        display: inline-block;
+        width: auto !important;
+        background: white !important;
+        color: black !important;
+        border: 1.7px solid rgb(5, 140, 97) !important;
     }
     .list_container 
     {
         display: grid;
-        grid-template-columns: auto auto auto auto auto;
+        gap: 2.5vw;
+        grid-template-columns: repeat(4, 1fr);
         position: absolute;
         left: 24vw;
         top: 15vh;
-        width: 75vw;
-        height:70vh;
+        
         border-radius: 10px;
     }
     .project 
     {
-        width: 12vw;
+        width: 16vw;
         height: 12vw;
         background-color: white;
         border-radius: 10px;
