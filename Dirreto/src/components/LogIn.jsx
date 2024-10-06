@@ -17,13 +17,13 @@ const SignUp = () => {
                 placeholder="Password"
             />
             <button>
-                Sign-Up
+                Log-In
             </button>
             <p>
-                Already have an account?
+                Don't have an account?
             </p>
             <p style={{color: "rgb(100, 150, 255)", cursor: "pointer"}}>
-                Go to Log-In
+                Go to Sign-Up
             </p>
         </div>
     </div>
