@@ -1,6 +1,11 @@
 import React from 'react'
 
+import { useNavigate } from 'react-router-dom'
+
 const Navigation1 = () => {
+
+  const navigate = useNavigate()
+
   return (
     <div className="navigation_container">
         <h1 className="navigation_logo">
@@ -38,10 +43,13 @@ const Navigation1 = () => {
             />
             EN
         </p>
-        <p>
+        <p onClick={() => navigate('/log-in')}>
             Log-In
         </p>
-        <p class="navigation_special">
+        <p 
+            class="navigation_special"
+            onClick={() => navigate('/sign-up')}
+        >
             Sign-Up for free
         </p>
     </div>

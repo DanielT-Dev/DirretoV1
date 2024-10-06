@@ -2,6 +2,7 @@ import React from 'react'
 import Navigation1 from './Navigation1'
 
 const Welcome = () => {
+
   return (
     <div className="welcome_container">
       <Navigation1/>
