@@ -1,7 +1,11 @@
 import React from 'react'
 import "../styles/Auth.css"
 
+import { useNavigate } from 'react-router-dom'
+
 const LogIn = () => {
+    const navigate = useNavigate()
+
   return (
     <div className="sign_up_container">
         <div className="sign_up_form">
@@ -22,7 +26,10 @@ const LogIn = () => {
             <p>
                 Don't have an account?
             </p>
-            <p style={{color: "rgb(100, 150, 255)", cursor: "pointer"}}>
+            <p 
+                style={{color: "rgb(100, 150, 255)", cursor: "pointer"}}
+                onClick={() => navigate('/sign-up')}
+            >
                 Go to Sign-Up
             </p>
         </div>
