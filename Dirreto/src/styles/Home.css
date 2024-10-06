@@ -38,4 +38,40 @@
     {
         background-color: rgb(170, 255, 180);
     }
+    .projects_container 
+    {
+        position: absolute;
+        left: 1vw;
+        top: 15vh;
+        width: 20vw;
+        height:70vh;
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    }
+    .projects_container h1 
+    {
+        padding-left: 1.5vw;
+        text-align: left;
+        font-size: 1.5vw;
+    }
+    .list_container 
+    {
+        display: grid;
+        grid-template-columns: auto auto auto auto auto;
+        position: absolute;
+        left: 24vw;
+        top: 15vh;
+        width: 75vw;
+        height:70vh;
+        border-radius: 10px;
+    }
+    .project 
+    {
+        width: 12vw;
+        height: 12vw;
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    }
 }
