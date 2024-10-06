@@ -6,6 +6,62 @@
         height: 100vh;
         background-color: rgb(238, 248, 243);
     }
+    .sign_up_form
+    {
+        position: absolute;
+        left: 5vw;
+        top: 10vh;
+        width: 90vw;
+        height: 47vh;
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    }
+    .sign_up_form h1 
+    {
+        margin-top: 5vh;
+        text-align: center;
+        letter-spacing: 2px;
+    }
+    .sign_up_form input 
+    {
+        margin-left: 9.5%;
+        margin-bottom: 2vh;
+        width: 75%;
+        padding-left: 2vh;
+        padding-top: 1.5vh;
+        padding-bottom: 1.5vh;
+        background-color: rgb(245, 245, 250);
+        border: none;
+        border-radius: 10px;
+        font-size: 2vh;
+    }
+    .sign_up_form button 
+    {
+        margin-left: 9.5%;
+        margin-top: 0vh;
+        margin-bottom: 5vh;
+        width: 79%;
+        padding-left: 1vh;
+        padding-top: 1.5vh;
+        padding-bottom: 1.5vh;
+        background-color: rgb(5, 140, 97);
+        color: white;
+        border: none;
+        border-radius: 10px;
+        font-size: 2vh;
+        cursor: pointer;
+    }
+    .sign_up_form button:hover 
+    {
+        background-color: rgb(0, 115, 80);
+    }
+    .sign_up_form p 
+    {
+        margin-top: -1.1vh;
+        text-align: center;
+        font-size: 1.8vh;
+    }
 }
 @media screen and (min-width: 600px)
 {
@@ -21,7 +77,7 @@
         left: calc(75vw / 2);
         top: 23vh;
         width: 25vw;
-        height: 22vw;
+        height: 23vw;
         background-color: white;
         border-radius: 10px;
         box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
