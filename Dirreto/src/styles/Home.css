@@ -1,0 +1,41 @@
+@media screen and (max-width: 600px)
+{
+
+}
+@media screen and (min-width: 600px)
+{
+    .home_container 
+    {
+        width: 100vw;
+        height: 100vh;
+        background-color: rgb(238, 248, 243);
+    }
+    .navigation_container 
+    {
+        display: flex;
+        flex-direction: row;
+        align-items: left;
+        justify-content: left;
+        position: absolute;
+        left: 1vw;
+        top: 2vh;
+        width: 98vw;
+        height: 8vh;
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    }
+    .navigation_container h1 
+    {
+        margin-left: 2vw;
+        width: 10vw;
+    }
+    .navigation_container p img 
+    {
+        margin-right: 0.5vw;
+    }
+    .navigation_container p:hover
+    {
+        background-color: rgb(170, 255, 180);
+    }
+}
