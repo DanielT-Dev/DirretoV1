@@ -1,6 +1,75 @@
 @media screen and (max-width: 600px)
 {
-
+    .home_container {
+        width: 100vw;
+        height: auto; /* Adjust to fit content */
+        background-color: rgb(238, 248, 243);
+    }
+    .home_container .navigation_container {
+        flex-direction: column; /* Stack items vertically */
+        justify-content: center;
+        align-items: center;
+        width: 100vw; /* Full width */
+        height: auto; /* Adjust height to fit content */
+        left: 0;
+        top: 0;
+    }
+    .navigation_container h1 {
+        margin-left: 3vw;
+        margin-top: 2vh;
+        width: 100vw; /* Adjusted to fit mobile screens */
+        text-align: center; /* Center text */
+        font-size: 3.7vh;
+    }
+    .navigation_container p{
+        display: none;
+        margin-top: 3.3vh;
+        margin-right: 0; /* Reduce spacing */
+    }
+    .navigation_container p img {
+        margin-right: 0; /* Reduce spacing */
+    }
+    .projects_container {
+        position: static; /* Allow natural flow */
+        width: 90vw; /* Full width on mobile */
+        height: auto; /* Auto height to fit content */
+        margin: 20px auto; /* Center on the screen */
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    }
+    .projects_container h1 {
+        font-size: 4vw; /* Larger text for mobile readability */
+    }
+    .projects_container input {
+        width: 85%; /* Wider input field */
+        font-size: 3vw; /* Larger font for readability */
+    }
+    .projects_container button {
+        width: 90%; /* Full-width button */
+        font-size: 4vw; /* Increase font size */
+    }
+    .projects_container button img {
+        width: 4vw; /* Larger button icon */
+    }
+    .projects_container p {
+        font-size: 4vw; /* Larger font size */
+    }
+    .projects_button {
+        width: 100%; /* Full width button */
+        font-size: 4vw; /* Increase font size */
+    }
+    .list_container {
+        display: flex; /* Change grid to flex */
+        flex-direction: column; /* Stack items vertically */
+        gap: 4vw; /* Add space between items */
+        width: 90vw; /* Full-width container */
+        margin: 20px auto; /* Center it */
+    }
+    .project {
+        width: 100%; /* Full width for each project */
+        height: auto; /* Adjust height */
+    }
 }
 @media screen and (min-width: 600px)
 {

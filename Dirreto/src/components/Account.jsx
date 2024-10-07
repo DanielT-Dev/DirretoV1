@@ -88,6 +88,8 @@ const Account = () => {
           You will recieve a 6 digit code on your email every time you try to log-in.
           </p>
         </div>
+        <br/>
+        <br/>
       </div>
     </div>
   )
