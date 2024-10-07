@@ -25,13 +25,10 @@ const Account = () => {
           Edit Profile
         </p>
         <p>
-          Password
+          Change Password
         </p>
         <p>
-          Auth
-        </p>
-        <p>
-          Appeareance
+          Enable Multi-Factor
         </p>
       </div>
 
@@ -68,7 +65,7 @@ const Account = () => {
         </p>
         <input 
           type="password"
-          placeholder='Old Password'
+          placeholder='Password'
         />
         <br/>
         <input 
@@ -79,7 +76,7 @@ const Account = () => {
           Confirm
         </button>
         <h2>
-          Auth
+          Multi-Factor Authentication
         </h2>
         <div style={{display: "flex", flexDirection: 'row'}}>
           <Switch/>
@@ -91,10 +88,6 @@ const Account = () => {
           You will recieve a 6 digit code on your email every time you try to log-in.
           </p>
         </div>
-        
-        <h2>
-          Appeareance
-        </h2>
       </div>
     </div>
   )
