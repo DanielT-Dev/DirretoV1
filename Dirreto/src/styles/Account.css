@@ -188,6 +188,23 @@
     margin-top: 2.3vh;
     width: 25%;
   }
+
+  .account_user button 
+  {
+    background: transparent;
+    border: 2px solid rgb(255, 140, 140) !important;
+    padding: 0.5vw;
+    border-radius: 10px;
+    color: rgb(90, 90, 110);
+    position: absolute;
+    right: 2vw;
+    cursor: pointer;
+  }
+  .account_user button:hover 
+  {
+    background-color: rgb(255, 140, 140);
+    color: white;
+  } 
   
   /* Media queries for mobile responsiveness */
   @media (max-width: 600px) {

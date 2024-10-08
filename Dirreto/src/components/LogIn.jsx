@@ -13,7 +13,15 @@ const LogIn = () => {
 
     async function login(email, password) {
         await account.createEmailPasswordSession(email, password);
-        setLoggedInUser(await account.get());
+        
+        //Get user from Appwrite
+        const user = await account.get()
+
+        //Save user in localStorage
+        localStorage.setItem("user", JSON.stringify(user));
+
+        if(user)
+            navigate('/home');
     }
 
   return (

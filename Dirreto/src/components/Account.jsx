@@ -1,10 +1,30 @@
-import React from 'react'
+import React, {useState} from 'react'
 import Navigation2 from './Navigation2'
 
 import "../styles/Account.css"
 import Switch from '../small_components/Switch'
 
+import { account, ID } from '../lib/appwrite';
+
+import { useNavigate } from 'react-router-dom';
+
 const Account = () => {
+
+  const navigate = useNavigate(); 
+
+  async function logout() {
+    try {
+        await account.deleteSession('current');
+
+        localStorage.removeItem("user");
+
+        navigate('/log-in');
+    } catch (error) {
+        console.error("Error logging out:", error);
+        alert("Logout failed: " + error.message);
+    }
+}
+
   return (
     <div className="account_container">
       <Navigation2/>
@@ -14,6 +34,11 @@ const Account = () => {
         <h1>
           Marian-Daniel Trușcă
         </h1>
+        <button 
+          onClick={() => logout()}
+        >
+          Log-out
+        </button>
       </div>
 
       <div className="account_links">
