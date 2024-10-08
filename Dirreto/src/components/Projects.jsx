@@ -112,7 +112,7 @@ const Projects = () => {
         </div>
         <div className="list_container">
             <div 
-              className="project"
+              className="project special1"
               onClick={() => openModal()}
             >
               <img 
