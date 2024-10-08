@@ -11,10 +11,10 @@ const Navigation2 = () => {
       <h1 onClick={() => navigate('/')}>
         Dirreto
       </h1>
-      <p onClick={() => navigate('/home')}>
+      <p>
         Overview
       </p>
-      <p>
+      <p onClick={() => navigate('/projects')}>
         Projects
       </p>
       <p>

@@ -116,7 +116,7 @@ const Projects = () => {
               onClick={() => openModal()}
             >
               <img 
-                src='/add2.png'
+                src='/add3.png'
                 style={{width: "30%", marginLeft: "30%", marginTop: "15%", borderRadius: "0"}}
               />
             </div>

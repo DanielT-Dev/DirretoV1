@@ -24,7 +24,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #ccc;
+  background-color: rgb(237, 237, 243);
   transition: 0.4s;
   border-radius: 34px;
 }
