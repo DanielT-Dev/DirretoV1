@@ -11,6 +11,9 @@ import SignUp from './components/SignUp.jsx';
 import LogIn from './components/LogIn.jsx';
 import Home from './components/Home.jsx';
 import Account from './components/Account.jsx';
+import ProtectedRoute from './ProtectedRoute.jsx';
+import { AuthProvider } from './AuthContext';
+
 
 const router = createBrowserRouter([
   {
@@ -27,16 +30,24 @@ const router = createBrowserRouter([
   },
   {
     path: "/home",
-    element: <Home/>,
+    element: 
+    <ProtectedRoute>
+      <Home/>
+    </ProtectedRoute>,
   },
   {
     path: "/account",
-    element: <Account/>,
+    element: 
+    <ProtectedRoute>
+      <Account/>
+    </ProtectedRoute>,
   },
 ]);
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </StrictMode>,
 )
