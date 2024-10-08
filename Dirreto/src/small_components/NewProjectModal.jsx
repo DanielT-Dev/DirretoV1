@@ -28,6 +28,15 @@ const NewProjectModal = ({ isOpen, onRequestClose }) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
+    const currentDate = new Date();
+
+    const formattedDate = currentDate.toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+    });
+
     await createNewDocument(
       databaseId, 
       collectionId,
@@ -35,6 +44,9 @@ const NewProjectModal = ({ isOpen, onRequestClose }) => {
         name: projectName,
         team: selectedTeam,
         image: selectedImage,
+        start_date: formattedDate,
+        tasks: 0,
+        progress: 0,
       }
     );
     onRequestClose(true);

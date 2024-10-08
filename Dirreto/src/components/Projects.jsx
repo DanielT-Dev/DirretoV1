@@ -120,6 +120,15 @@ const Projects = () => {
                 <p>
                   ({doc.team})
                 </p>
+                <h2>
+                  Created at: {doc.start_date}
+                </h2>
+                <h2>
+                  Assigned tasks: {doc.tasks}
+                </h2>
+                <h2>
+                  Total progress: {doc.progress} %
+                </h2>
               </div>
             ))}
            
