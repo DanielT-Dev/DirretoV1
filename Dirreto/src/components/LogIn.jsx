@@ -1,10 +1,20 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "../styles/Auth.css"
 
 import { useNavigate } from 'react-router-dom'
 
+import { account, ID } from '../lib/appwrite';
+
 const LogIn = () => {
     const navigate = useNavigate()
+
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+
+    async function login(email, password) {
+        await account.createEmailPasswordSession(email, password);
+        setLoggedInUser(await account.get());
+    }
 
   return (
     <div className="sign_up_container">
@@ -15,12 +25,16 @@ const LogIn = () => {
             <input 
                 type="text"
                 placeholder="Email"
+                onChange={(e) => setEmail(e.target.value)}
             />
             <input 
                 type="password"
                 placeholder="Password"
+                onChange={(e) => setPassword(e.target.value)}
             />
-            <button>
+            <button
+                onClick={() => login(email, password)}
+            >
                 Log-In
             </button>
             <p>

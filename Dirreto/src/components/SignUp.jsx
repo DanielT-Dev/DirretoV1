@@ -1,13 +1,22 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "../styles/Auth.css"
 
 import { useNavigate } from 'react-router-dom'
 
+import { account, ID } from '../lib/appwrite';
 
 const SignUp = () => {
 
     const navigate = useNavigate()
 
+    const [username, setUsername] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+
+    async function login(email, password) {
+        await account.createEmailPasswordSession(email, password);
+        setLoggedInUser(await account.get());
+    }
 
   return (
     <div className="sign_up_container">
@@ -17,13 +26,30 @@ const SignUp = () => {
             </h1>
             <input 
                 type="text"
+                placeholder="Username"
+                onChange={(e) => setUsername(e.target.value)}
+            />
+            <input 
+                type="text"
                 placeholder="Email"
+                onChange={(e) => setEmail(e.target.value)}
             />
             <input 
                 type="password"
                 placeholder="Password"
+                onChange={(e) => setPassword(e.target.value)}
             />
-            <button>
+            <button
+                onClick={async () => {
+                    try {
+                      await account.create(ID.unique(), email, password, username, "");
+                      await login(email, password);
+                    } catch (error) {
+                      console.error("Error creating user:", error.message);
+                      // You can also display this error to the user via state
+                    }
+                  }}
+            >
                 Sign-Up
             </button>
             <p>
