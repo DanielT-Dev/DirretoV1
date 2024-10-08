@@ -1,4 +1,4 @@
-import { Client, Account} from 'appwrite';
+import { Client, Account, Databases} from 'appwrite';
 
 export const client = new Client();
 
@@ -8,3 +8,15 @@ client
 
 export const account = new Account(client);
 export { ID } from 'appwrite';
+
+const databases = new Databases(client);
+
+export async function getAllDocuments(databaseId, collectionId) {
+    try {
+      const response = await databases.listDocuments(databaseId, collectionId);
+      console.log(response.documents); // Array of documents
+      return response.documents;
+    } catch (error) {
+      console.error('Error fetching documents:', error);
+    }
+  }

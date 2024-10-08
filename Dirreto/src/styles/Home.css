@@ -70,6 +70,38 @@
         width: 100%; /* Full width for each project */
         height: auto; /* Adjust height */
     }
+    .project img 
+    {
+        position: relative;
+        left: 5%;
+        top: 7.5%;
+        width: 30%;
+        border-radius: 15px;
+    }
+    .project h1 
+    {
+        font-size: 1.5vw;
+        font-weight: 500;
+        position: relative;
+        top: -35%;
+        left: 37%;
+        text-align: center;
+        width: 60%;
+    }
+    .project p
+    {
+        font-size: 1vw;
+        font-weight: 400;
+        position: relative;
+        top: -43%;
+        left: 37%;
+        text-align: center;
+        width: 60%;
+    }
+    .project:hover
+    {
+        background-color: rgb(247, 247,247);
+    }
 }
 @media screen and (min-width: 600px)
 {
@@ -205,5 +237,38 @@
         background-color: white;
         border-radius: 10px;
         box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        cursor: pointer;
+    }
+    .project img 
+    {
+        position: relative;
+        left: 5%;
+        top: 7.5%;
+        width: 30%;
+        border-radius: 15px;
+    }
+    .project h1 
+    {
+        font-size: 1.5vw;
+        font-weight: 500;
+        position: relative;
+        top: -35%;
+        left: 37%;
+        text-align: center;
+        width: 60%;
+    }
+    .project p
+    {
+        font-size: 1vw;
+        font-weight: 400;
+        position: relative;
+        top: -43%;
+        left: 37%;
+        text-align: center;
+        width: 60%;
+    }
+    .project:hover
+    {
+        background-color: rgb(247, 247,247);
     }
 }
