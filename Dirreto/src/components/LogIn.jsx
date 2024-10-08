@@ -5,13 +5,17 @@ import { useNavigate } from 'react-router-dom'
 
 import { account, ID } from '../lib/appwrite';
 
+import { useAuth } from '../AuthContext';
+
 const LogIn = () => {
     const navigate = useNavigate()
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    async function login(email, password) {
+    const { login } = useAuth();
+
+    async function handle_login(email, password) {
         await account.createEmailPasswordSession(email, password);
         
         //Get user from Appwrite
@@ -19,6 +23,8 @@ const LogIn = () => {
 
         //Save user in localStorage
         localStorage.setItem("user", JSON.stringify(user));
+
+        login(user);
 
         if(user)
             navigate('/home');
@@ -41,7 +47,7 @@ const LogIn = () => {
                 onChange={(e) => setPassword(e.target.value)}
             />
             <button
-                onClick={() => login(email, password)}
+                onClick={() => handle_login(email, password)}
             >
                 Log-In
             </button>
