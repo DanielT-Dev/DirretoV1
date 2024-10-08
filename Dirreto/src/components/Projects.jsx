@@ -38,6 +38,16 @@ const Projects = () => {
     setModalOpen(false);
   };
 
+  const [searchTerm, setSearchTerm] = useState('');
+  const [filteredDocuments, setFilteredDocuments] = useState([]);
+
+  const handleSearch = () => {
+    const results = documents.filter(doc =>
+      doc.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setFilteredDocuments(results); // Update filtered documents
+  };
+
   useEffect(() => {
     const fetchDocuments = async () => {
       setLoading(true);
@@ -45,6 +55,7 @@ const Projects = () => {
       const response = await getAllDocuments(databaseId, collectionId);
 
       setDocuments(response);
+      setFilteredDocuments(response);
       setLoading(false);
     }
     fetchDocuments();
@@ -62,8 +73,10 @@ const Projects = () => {
             <input 
               type="text"
               placeholder='Project Name'
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)} 
             />
-            <button>
+            <button onClick={handleSearch}>
               <img src="/search1.png"/>
               Search
             </button>
@@ -108,7 +121,7 @@ const Projects = () => {
               />
             </div>
 
-            {documents.map((doc) => (
+            {filteredDocuments.map((doc) => (
               <div 
                 className="project"
                 key={doc.$id}
