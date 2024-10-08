@@ -20,3 +20,20 @@ export async function getAllDocuments(databaseId, collectionId) {
       console.error('Error fetching documents:', error);
     }
   }
+
+import { ID } from 'appwrite';
+
+export async function createNewDocument(databaseId, collectionId, data) {
+    try {
+      const response = await databases.createDocument(
+        databaseId, 
+        collectionId,
+        ID.unique(),             // Unique document ID (or a custom one)
+        data,
+      );
+  
+      console.log('Document created successfully:', response);
+    } catch (error) {
+      console.error('Error creating document:', error);
+    }
+  }

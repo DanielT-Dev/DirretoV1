@@ -3,6 +3,8 @@ import { getAllDocuments } from '../lib/appwrite';
 
 import NewProjectModal from "../small_components/NewProjectModal"
 
+import Notification from "../small_components/Notification"
+
 const Projects = () => {
   const databaseId = '6704fcb7000a5b637f96';
   const collectionId = '6705393f00287ff14560';
@@ -11,13 +13,28 @@ const Projects = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  const [notification, setNotification] = useState({ message: '', type: '' });
+
+  // Function to show a notification
+  const showNotification = (message, type = 'info') => {
+      setNotification({ message, type });
+  };
+
+  // Function to close the notification
+  const closeNotification = () => {
+      setNotification({ message: '', type: '' });
+  };
+
   const [isModalOpen, setModalOpen] = useState(false);
 
   const openModal = () => {
     setModalOpen(true);
   };
 
-  const closeModal = () => {
+  const closeModal = (success) => {
+    if(success)
+      showNotification("Project created successfully.");
+
     setModalOpen(false);
   };
 
@@ -81,6 +98,16 @@ const Projects = () => {
             
         </div>
         <div className="list_container">
+            <div 
+              className="project"
+              onClick={() => openModal()}
+            >
+              <img 
+                src='/add2.png'
+                style={{width: "30%", marginLeft: "30%", marginTop: "15%", borderRadius: "0"}}
+              />
+            </div>
+
             {documents.map((doc) => (
               <div 
                 className="project"
@@ -95,17 +122,15 @@ const Projects = () => {
                 </p>
               </div>
             ))}
-            <div 
-              className="project"
-              onClick={() => openModal()}
-            >
-              <img 
-                src='/add2.png'
-                style={{width: "30%", marginLeft: "30%", marginTop: "15%", borderRadius: "0"}}
-              />
-            </div>
+           
         </div>
-        <NewProjectModal isOpen={isModalOpen} onRequestClose={closeModal} />
+        <NewProjectModal isOpen={isModalOpen} onRequestClose={closeModal}/>
+        <Notification
+          message={notification.message}
+          type={notification.type}
+          duration={3000} // optional, default is 3000ms
+          onClose={closeNotification}
+        />
     </div>
   )
 }

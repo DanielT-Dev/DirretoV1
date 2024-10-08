@@ -77,3 +77,10 @@
     opacity: 0.9; /* Slightly transparent on hover */
   }
   
+  .modal:focus {
+    outline: none;
+  }
+  input:focus 
+  {
+    outline: none;
+  }

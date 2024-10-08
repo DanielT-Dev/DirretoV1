@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal';
 import './NewProjectModal.css'; // Import the CSS file
+import { createNewDocument } from '../lib/appwrite';
 
 // Sample teams data
 const teams = [
@@ -13,24 +14,36 @@ const teams = [
 Modal.setAppElement('#root');
 
 const NewProjectModal = ({ isOpen, onRequestClose }) => {
+
+  const databaseId = '6704fcb7000a5b637f96';
+  const collectionId = '6705393f00287ff14560';
+
   const [projectName, setProjectName] = useState('');
-  const [selectedImage, setSelectedImage] = useState(null);
+  const [selectedImage, setSelectedImage] = useState("");
   const [selectedTeam, setSelectedTeam] = useState('');
 
   const handleImageChange = (event) => {
     setSelectedImage(event.target.files[0]);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log({ projectName, selectedImage, selectedTeam });
-    onRequestClose();
+    await createNewDocument(
+      databaseId, 
+      collectionId,
+      {
+        name: projectName,
+        team: selectedTeam,
+        image: selectedImage,
+      }
+    );
+    onRequestClose(true);
   };
 
   return (
     <Modal
       isOpen={isOpen}
-      onRequestClose={onRequestClose}
+      onRequestClose={() => onRequestClose(false)}
       contentLabel="Create New Project"
       className="modal"  // Add modal class for custom styles
       overlayClassName="overlay" // Add overlay class for custom styles
@@ -50,11 +63,12 @@ const NewProjectModal = ({ isOpen, onRequestClose }) => {
 
         <div>
           <input
-            type="file"
-            id="imageSelector"
-            accept="image/*"
-            onChange={handleImageChange}
-            placeholder='Project Image'
+            type="text"
+            id="selectedImage"
+            value={selectedImage}
+            onChange={(e) => setSelectedImage(e.target.value)}
+            required
+            placeholder='Insert Image URL'
           />
         </div>
 
