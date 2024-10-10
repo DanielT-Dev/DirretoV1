@@ -17,7 +17,7 @@ const Navigation2 = () => {
       <p onClick={() => navigate('/projects')}>
         Projects
       </p>
-      <p>
+      <p onClick={() => navigate('/teams')}>
         Teams
       </p>
       <p>
