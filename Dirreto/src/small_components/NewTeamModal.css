@@ -1,0 +1,100 @@
+/* NewProjectModal.css */
+.modal {
+    width: 20vw;              /* Width of the modal */
+    height: 55vh;            /* Height of the modal */
+    padding: 20px;           /* Padding inside the modal */
+    display: flex;           /* Use flexbox for layout */
+    flex-direction: column;  /* Arrange children in a column */
+    justify-content: space-between; /* Space out the form */
+    background-color: white; /* Background color */
+    border-radius: 8px;      /* Rounded corners */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+  }
+  
+  .overlay {
+    position: fixed;       /* Fixed position for overlay */
+    top: 0;               /* Cover the top */
+    left: 0;              /* Cover the left */
+    right: 0;             /* Cover the right */
+    bottom: 0;            /* Cover the bottom */
+    background: rgba(0, 0, 0, 0.3); /* Lighter semi-transparent background */
+    display: flex;        /* Center modal horizontally and vertically */
+    align-items: center;  /* Center items vertically */
+    justify-content: center; /* Center items horizontally */
+  }
+  
+  .modal form 
+  {
+    position: relative;
+    top: 0vh;
+  }
+
+  .modal h2 {
+    margin-top: -1vh;
+  }
+  
+  .modal div {
+    margin-bottom: 15px; /* Space between form elements */
+  }
+  
+  .modal input[type="text"],
+  .modal input[type="file"],
+  .modal select {
+    margin-left:0%;          /* Margin left */
+    margin-bottom: 1vh;         /* Margin bottom */
+    width: 90%;                 /* Width of the input */
+    padding-left: 2vh;         /* Padding left */
+    padding-top: 1.5vh;        /* Padding top */
+    padding-bottom: 1.5vh;     /* Padding bottom */
+    background-color: rgb(245, 245, 250); /* Background color */
+    border: none;               /* No border */
+    border-radius: 10px;       /* Rounded corners */
+    font-size: 2vh;            /* Font size */
+  }
+  .modal select
+  {
+    width: 95% !important;
+  }
+  
+  .modal button {
+    margin-left: 0%;          /* Margin left */
+    margin-right: 1vw;
+    margin-top: 0vh;            /* Margin top */
+    margin-bottom: 5vh;         /* Margin bottom */
+    width: 95%;                 /* Width of the button */
+    padding-left: 1vh;         /* Padding left */
+    padding-top: 1.5vh;        /* Padding top */
+    padding-bottom: 1.5vh;     /* Padding bottom */
+    background-color: rgb(5, 140, 97); /* Button background color */
+    color: white;              /* Text color */
+    border: none;              /* No border */
+    border-radius: 10px;      /* Rounded corners */
+    font-size: 2vh;           /* Font size */
+    cursor: pointer;           /* Pointer cursor on hover */
+  }
+  
+  .modal button:hover {
+    opacity: 0.9; /* Slightly transparent on hover */
+  }
+  
+  .modal:focus {
+    outline: none;
+  }
+  input:focus 
+  {
+    outline: none;
+  }
+
+  .modal textarea {
+    margin-left: 6%;
+    margin-bottom: 2vh;
+    width: 70%;
+    height: 10vh;
+    padding-left: 1vw;
+    padding-top: 1.5vh;
+    padding-bottom: 1.5vh;
+    background-color: rgb(245, 245, 250);
+    border: none;
+    border-radius: 10px;
+    font-size: 0.9vw;
+  }
