@@ -57,7 +57,7 @@ const NewProjectModal = ({ isOpen, onRequestClose }) => {
       isOpen={isOpen}
       onRequestClose={() => onRequestClose(false)}
       contentLabel="Create New Project"
-      className="modal"  // Add modal class for custom styles
+      className="modal1"  // Add modal class for custom styles
       overlayClassName="overlay" // Add overlay class for custom styles
     >
       <h2>Create New Project</h2>

@@ -1,5 +1,5 @@
 /* NewProjectModal.css */
-.modal {
+.modal1 {
     width: 20vw;              /* Width of the modal */
     height: 40vh;            /* Height of the modal */
     padding: 20px;           /* Padding inside the modal */
@@ -23,23 +23,23 @@
     justify-content: center; /* Center items horizontally */
   }
   
-  .modal form 
+  .modal1 form 
   {
     position: relative;
     top: 0vh;
   }
 
-  .modal h2 {
+  .modal1 h2 {
     margin-top: -1vh;
   }
   
-  .modal div {
+  .modal1 div {
     margin-bottom: 15px; /* Space between form elements */
   }
   
-  .modal input[type="text"],
-  .modal input[type="file"],
-  .modal select {
+  .modal1 input[type="text"],
+  .modal1 input[type="file"],
+  .modal1 select {
     margin-left:0%;          /* Margin left */
     margin-bottom: 1vh;         /* Margin bottom */
     width: 90%;                 /* Width of the input */
@@ -51,12 +51,12 @@
     border-radius: 10px;       /* Rounded corners */
     font-size: 2vh;            /* Font size */
   }
-  .modal select
+  .modal1 select
   {
     width: 95% !important;
   }
   
-  .modal button {
+  .modal1 button {
     margin-left: 0%;          /* Margin left */
     margin-right: 1vw;
     margin-top: 0vh;            /* Margin top */
@@ -73,11 +73,11 @@
     cursor: pointer;           /* Pointer cursor on hover */
   }
   
-  .modal button:hover {
+  .modal1 button:hover {
     opacity: 0.9; /* Slightly transparent on hover */
   }
   
-  .modal:focus {
+  .modal1:focus {
     outline: none;
   }
   input:focus 
