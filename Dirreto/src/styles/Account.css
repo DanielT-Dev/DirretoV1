@@ -19,6 +19,11 @@
     border-radius: 10px;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   }
+
+  .account_container
+  {
+    position: static !important;
+  }
   
   .account_user {
     display: flex;
@@ -205,6 +210,13 @@
     background-color: rgb(255, 140, 140);
     color: white;
   } 
+  .account_user p 
+  {
+    position: relative;
+    top: 5vh;
+    left: -16vw;
+    color: rgb(130, 130, 160);
+  }
   
   /* Media queries for mobile responsiveness */
   @media (max-width: 600px) {

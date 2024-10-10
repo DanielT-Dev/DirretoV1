@@ -1,35 +1,80 @@
 .notification {
     position: fixed;
-    top: 20px;
-    right: 20px;
-    padding: 10px 20px;
+    top: 30px !important;
+    right: -74vw !important;
+    padding: 15px 25px;
     background-color: #333;
     color: white;
-    border-radius: 5px;
+    border-radius: 8px;
     z-index: 1000;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-    opacity: 0.9;
-    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    opacity: 0.95;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    transform: translateY(-10px);
+    animation: slideIn 0.5s ease-out, fadeout 0.5s 3.5s ease-in;
+    overflow: hidden;
+    position: relative; /* Keep the progress bar inside the notification */
+    width: 20vw;
+    max-width: 300px; /* Adjust to fit your needs */
 }
 
+/* Notification types */
 .notification.success {
-    background-color: #4CAF50;
+    background-color:rgb(5, 140, 97);
 }
-
 .notification.error {
     background-color: #f44336;
 }
-
 .notification.warning {
     background-color: #ff9800;
 }
 
-@keyframes fadein {
-    from {opacity: 0;}
-    to {opacity: 1;}
+.notification .icon {
+    font-size: 20px;
 }
 
+/* Slide-in animation */
+@keyframes slideIn {
+    from {
+        transform: translateY(-30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Fade-out animation */
 @keyframes fadeout {
-    from {opacity: 1;}
+    from {opacity: 0.95;}
     to {opacity: 0;}
+}
+
+/* Progress Bar */
+.notification::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 4px;
+    width: 100%;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.1));
+    animation: progress 3s linear forwards;
+}
+
+/* Progress Bar Animation */
+@keyframes progress {
+    from {
+        width: 100%;
+    }
+    to {
+        width: 0%;
+    }
 }

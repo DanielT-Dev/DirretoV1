@@ -1,4 +1,4 @@
-import { Client, Account, Databases} from 'appwrite';
+import { Client, Account, Databases, Query} from 'appwrite';
 
 export const client = new Client();
 
@@ -32,8 +32,41 @@ export async function createNewDocument(databaseId, collectionId, data) {
         data,
       );
   
-      console.log('Document created successfully:', response);
     } catch (error) {
       console.error('Error creating document:', error);
     }
   }
+
+  export const updateDocument = async (databaseId, collectionId, documentId, updatedData) => {
+    try {
+      const updatedDocument = await databases.updateDocument(
+        databaseId,
+        collectionId,
+        documentId,
+        updatedData
+      );
+      
+      return updatedDocument;
+    } catch (error) {
+      console.error('Error updating document:', error);
+    }
+  };
+
+  export async function getDocumentByEmail(databaseId, collectionId, email) {
+    try {
+      const response = await databases.listDocuments(
+        databaseId,
+        collectionId,
+        [Query.equal('email', email)] // Query to filter by email field
+      );
+
+      if (response.documents.length > 0) {;
+        return response.documents[0]; // Return the first document found
+      } else {
+        console.log('No document found with that email');
+        return null;
+      }
+    } catch (error) {
+      console.error('Error fetching document by email:', error);
+    }
+}
