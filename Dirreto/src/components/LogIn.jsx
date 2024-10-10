@@ -27,7 +27,7 @@ const LogIn = () => {
         login(user);
 
         if(user)
-            navigate('/home');
+            navigate('/projects');
     }
 
   return (

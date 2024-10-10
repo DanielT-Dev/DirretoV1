@@ -23,7 +23,7 @@ const SignUp = () => {
         localStorage.setItem("user", JSON.stringify(user));
 
         if(user)
-            navigate('/home');
+            navigate('/projects');
     }
 
   return (
