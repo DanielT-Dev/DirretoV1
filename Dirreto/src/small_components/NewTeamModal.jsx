@@ -25,12 +25,27 @@ const NewTeamModal = ({ isOpen, onRequestClose }) => {
     // Convert the teamMembers string into an array
     const membersArray = teamMembers.split(',').map(member => member.trim());
 
+    const currentDate = new Date();
+
+    const formattedDate = currentDate.toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+    });
+
+    const user_info = JSON.parse(localStorage.getItem("user_info"))
+
+    const leader = user_info.first_name + " " + user_info.last_name
+
     // Prepare data to send to the database
     const teamData = {
       name: teamName,
       description: teamDescription,
       members: membersArray,
-      image: teamImage ? URL.createObjectURL(teamImage) : null, // Use URL.createObjectURL for local image preview
+      image: teamImage,
+      start: formattedDate,
+      projects: [],
+      leader: leader,
     };
 
     await createNewDocument(databaseId, collectionId, teamData);
@@ -62,6 +77,7 @@ const NewTeamModal = ({ isOpen, onRequestClose }) => {
           <input
             type="text"
             id="teamImage"
+            value={teamImage}
             onChange={(e) => setTeamImage(e.target.value)}
             required
             placeholder='Team Image URL'
