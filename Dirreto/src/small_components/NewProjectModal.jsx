@@ -51,8 +51,17 @@ const NewProjectModal = ({ isOpen, onRequestClose }) => {
   useEffect(() => {
     const fetchTeams = async () => {
       try {
-        const t = await getAllDocuments(databaseId, collectionId2);
-        setTeams(t);
+        const response = await getAllDocuments(databaseId, collectionId2);
+
+        const user = JSON.parse(localStorage.getItem("user_info"))
+        const user_name = user.first_name + " " + user.last_name
+        
+        const filtered_response = response.filter(team => 
+          team.members && team.members.some(member => member === user_name)
+        );
+
+
+        setTeams(filtered_response);
       } catch (error) {
         console.error("Failed to fetch teams:", error);
       }

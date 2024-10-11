@@ -49,7 +49,15 @@ const Teams = () => {
           const response = await getAllDocuments(databaseId, collectionId);
     
           setDocuments(response);
-          setFilteredDocuments(response);
+          
+          const user = JSON.parse(localStorage.getItem("user_info"))
+          const user_name = user.first_name + " " + user.last_name
+          
+          const filtered_response = response.filter(team => 
+            team.members && team.members.some(member => member === user_name)
+          );
+
+          setFilteredDocuments(filtered_response);
           setLoading(false);
         }
         fetchDocuments();
