@@ -1,14 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Modal from 'react-modal';
 import './NewProjectModal.css'; // Import the CSS file
-import { createNewDocument } from '../lib/appwrite';
-
-// Sample teams data
-const teams = [
-  { id: 1, name: 'Team Alpha' },
-  { id: 2, name: 'Team Beta' },
-  { id: 3, name: 'Team Gamma' },
-];
+import { createNewDocument, getAllDocuments } from '../lib/appwrite';
 
 // Set up the modal element for accessibility
 Modal.setAppElement('#root');
@@ -17,10 +10,13 @@ const NewProjectModal = ({ isOpen, onRequestClose }) => {
 
   const databaseId = '6704fcb7000a5b637f96';
   const collectionId = '6705393f00287ff14560';
+  const collectionId2 = '6707fdba000415e265b0';
 
   const [projectName, setProjectName] = useState('');
   const [selectedImage, setSelectedImage] = useState("");
   const [selectedTeam, setSelectedTeam] = useState('');
+
+  const [teams, setTeams] = useState([]);
 
   const handleImageChange = (event) => {
     setSelectedImage(event.target.files[0]);
@@ -51,6 +47,20 @@ const NewProjectModal = ({ isOpen, onRequestClose }) => {
     );
     onRequestClose(true);
   };
+
+  useEffect(() => {
+    const fetchTeams = async () => {
+      try {
+        const t = await getAllDocuments(databaseId, collectionId2);
+        setTeams(t);
+      } catch (error) {
+        console.error("Failed to fetch teams:", error);
+      }
+    };
+  
+    fetchTeams();
+  }, []);
+  
 
   return (
     <Modal
@@ -92,8 +102,8 @@ const NewProjectModal = ({ isOpen, onRequestClose }) => {
             required
           >
             <option value="">Select a team</option>
-            {teams.map((team) => (
-              <option key={team.id} value={team.name}>
+            {teams.map((team, k) => (
+              <option key={k} value={team.name}>
                 {team.name}
               </option>
             ))}
