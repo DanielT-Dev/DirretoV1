@@ -92,3 +92,38 @@
         left: 10.5vw;
         top: 7.5vh;
     }
+    @media screen and (max-width: 600px)
+    {
+        .teams_list 
+        {
+            left: 5vw ;
+            width: 90vw;
+        }
+        .team h1
+        {
+            font-size: 2.3vh;
+            margin-left: 4vw;
+        }
+        .team img 
+        {
+            margin-left: 4vw;
+        }
+        .team p 
+        {
+            font-size: 1.3vh !important;
+        }
+        .team_info 
+        {
+            display: flex;
+            flex-direction: column;
+            margin-right: 3vw;
+        }
+        .team_special 
+        {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            left: 41vw;
+            top: 5vh;
+        }
+    }
