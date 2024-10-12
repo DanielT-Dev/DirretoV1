@@ -5,7 +5,11 @@ import NewProjectModal from "../small_components/NewProjectModal"
 
 import Notification from "../small_components/Notification"
 
+import { useNavigate } from 'react-router-dom';
+
 const Projects = () => {
+  const navigate = useNavigate()
+
   const databaseId = '6704fcb7000a5b637f96';
   const collectionId = '6705393f00287ff14560';
 
@@ -129,7 +133,7 @@ const Projects = () => {
               <div 
                 className="project"
                 key={doc.$id}
-                onClick={() => setProject(doc)}
+                onClick={() => {setProject(doc); navigate('/project/123')}}
               >
                 <img src={doc.image}/>
                 <h1>
