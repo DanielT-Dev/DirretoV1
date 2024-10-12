@@ -184,3 +184,93 @@
         bottom: 0;
         right: 1vw;
     }
+    @media (max-width: 768px) {
+        .project_container 
+        {
+            position: absolute;
+            width: 100vw;
+            height: 130vh;
+            overflow-x: hidden;
+        }
+        .project_info
+        {
+            margin-top: 15vh !important;
+        }
+        .project_info, .project_list, .project_team, .project_main {
+            width: 90vw;
+            left: 5vw;
+            right: 5vw;
+            top: auto;
+            height: auto;
+            position: relative;
+            margin-top: 3vh;
+        }
+    
+        .project_info {
+            flex-direction: column;
+            height: auto;
+        }
+    
+        .project_task {
+            width: 40vw;
+            height: 40vw;
+        }
+    
+        .project_task img {
+            margin-left: 20%;
+            width: 60%;
+        }
+    
+        .project_task p {
+            font-size: 2.5vh;
+        }
+    
+        .project_task h2 {
+            font-size: 1.5vh;
+        }
+    
+        .project_task h3 {
+            font-size: 1.3vh;
+        }
+    
+        .navigation_container {
+            flex-direction: column;
+            align-items: flex-start;
+            height: auto;
+        }
+    
+        .navigation_container h1 {
+            font-size: 5vw;
+        }
+    
+        .project_info img {
+            width: 30vw;
+            height: 30vw;
+            margin-left: 30vw;
+            margin-top: 1.5vh;
+        }
+    
+        .project_info h1 {
+            font-size: 3vh;
+            text-align: center;
+        }
+    
+        .project_info p {
+            margin-top: 0;
+            font-size: 3.5vw;
+            text-align: center;
+        }
+    
+        .project_team h1 {
+            padding-top: 3vh;
+            font-size: 3vh;
+        }
+        .project_team img 
+        {
+            width: 1.75vh;
+            height: 1.75vh;
+            margin-top: 2vh;
+            margin-left: 5vw;
+            margin-right: 3vw;
+        }
+    }

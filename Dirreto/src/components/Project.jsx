@@ -87,7 +87,7 @@ const Project = () => {
                                 Assigned at: {a.date1}
                             </h3>
                             <h3>
-                                Date: {a.date1}
+                                Date: {a.date2}
                             </h3>
                         </div>
                     })
