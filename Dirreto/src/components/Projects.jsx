@@ -61,6 +61,10 @@ const Projects = () => {
     fetchDocuments();
   }, [databaseId, collectionId]); // Dependencies for useEffect
 
+  const setProject = (p) => {
+    localStorage.setItem("project", JSON.stringify(p))
+  }
+
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
 
@@ -125,6 +129,7 @@ const Projects = () => {
               <div 
                 className="project"
                 key={doc.$id}
+                onClick={() => setProject(doc)}
               >
                 <img src={doc.image}/>
                 <h1>

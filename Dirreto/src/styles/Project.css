@@ -34,6 +34,8 @@
     }
     .project_info 
     {
+        display: flex;
+        flex-direction: row;
         position: absolute;
         left: 1vw;
         top: 15vh;
@@ -83,4 +85,26 @@
         background-color: white;
         border-radius: 10px;
         box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    }
+    .project_info img
+    {
+        margin-left: 1vw;
+        margin-top: 1.25vw;
+        width: 10vw;
+        height: 10vw;
+        border-radius: 15px;
+    }
+    .project_info h1 
+    {
+        font-size: 2vw;
+        font-weight: 400;
+        margin-left: 1vw;
+    }
+    .project_info p
+    {
+        font-size: 0.8vw;
+        font-weight: 400;
+        margin-left: 1vw;
+        margin-top: -2vh;
+        color: rgb(130, 130, 160);
     }
