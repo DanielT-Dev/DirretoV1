@@ -3,9 +3,23 @@ import { useParams } from 'react-router-dom';
 import "../styles/Project.css"
 import Navigation2 from "./Navigation2"
 import { getAllDocuments } from '../lib/appwrite';
+import NewTaskModal from '../small_components/NewTaskModal';
 
 const Project = () => {
     const { id } = useParams();
+
+    const [isModalOpen, setModalOpen] = useState(false);
+
+    const openModal = () => {
+      setModalOpen(true);
+    };
+  
+    const closeModal = (success) => {
+      if(success)
+        showNotification("Team created successfully.");
+  
+      setModalOpen(false);
+    };
 
     const project_info = JSON.parse(localStorage.getItem("project"));
 
@@ -68,7 +82,10 @@ const Project = () => {
                 </div>
             </div>
             <div className="project_list">
-                <div className="project_task">
+                <div 
+                    className="project_task"
+                    onClick={openModal}
+                >
                     <p>
                         New Task
                     </p>
@@ -147,6 +164,7 @@ const Project = () => {
                 }
                 
             </div>
+            <NewTaskModal isOpen={isModalOpen} onRequestClose={closeModal}/>
         </div>
     )
 }

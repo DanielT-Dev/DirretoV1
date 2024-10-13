@@ -98,3 +98,17 @@
     border-radius: 10px;
     font-size: 0.9vw;
   }
+  .modal input[type="date"] {
+    width: 88%; /* Full width input */
+    padding: 10px; /* Adds space inside the input */
+    border: 1px solid #ccc; /* Light grey border */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 16px; /* Increases font size */
+    background-color: rgb(245, 245, 250); /* Light background color */
+    transition: border-color 0.2s ease-in-out; /* Smooth border color change on focus */
+  }
+  
+  .modal input[type="date"]:focus {
+    border-color: #007BFF; /* Changes border color to blue on focus */
+    outline: none; /* Removes the default blue outline */
+  }

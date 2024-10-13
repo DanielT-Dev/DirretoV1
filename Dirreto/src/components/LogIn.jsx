@@ -3,11 +3,15 @@ import "../styles/Auth.css"
 
 import { useNavigate } from 'react-router-dom'
 
-import { account, ID } from '../lib/appwrite';
+import { account, getAllDocuments, ID } from '../lib/appwrite';
 
 import { useAuth } from '../AuthContext';
 
 const LogIn = () => {
+
+    const databaseId = '6704fcb7000a5b637f96';
+    const collectionId = '6705382c003c45dd9f1a';
+
     const navigate = useNavigate()
 
     const [email, setEmail] = useState("");
@@ -23,6 +27,10 @@ const LogIn = () => {
 
         //Save user in localStorage
         localStorage.setItem("user", JSON.stringify(user));
+
+        const user_info = await getAllDocuments(databaseId, collectionId);
+
+        localStorage.setItem("user_info", JSON.stringify(user_info.filter(u => u.email == user.email)[0]))
 
         login(user);
 
