@@ -1,10 +1,23 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import { useNavigate } from 'react-router-dom'
+
+import Notifications from "./Notifications"
 
 const Navigation2 = () => {
 
   const navigate = useNavigate()
+
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
+  const openModal = () => {
+    setModalIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalIsOpen(false);
+  };
+
 
   return (
     <div className="navigation_container">
@@ -24,7 +37,7 @@ const Navigation2 = () => {
         Calendar
       </p>
 
-      <p style={{marginLeft: "40vw"}}>
+      <p style={{marginLeft: "40vw"}} onClick={openModal}>
         <img src="/bell1.png"/>
         Notifications
       </p>
@@ -32,6 +45,7 @@ const Navigation2 = () => {
         <img src="/user1.png"/>
         Daniel Trusca
       </p>
+      <Notifications modalIsOpen={modalIsOpen} closeModal={closeModal}/>
     </div>
   )
 }
