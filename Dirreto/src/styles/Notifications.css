@@ -77,7 +77,8 @@
   }
   .modal-content ul li h2 
   {
-    font-size: 1vw;
+    font-size: 0.8vw;
+    margin-left: 1vw;
   }
   .modal-content li img 
   {
@@ -86,7 +87,9 @@
   }
   .modal-content p 
   {
-    margin-top: -1.5vh;
+    margin-left: 1vw;
+    margin-top: -1vh;
+    font-size: 0.8vw;
     color: rgb(130, 130, 160);
   }
   .modal-content:focus {

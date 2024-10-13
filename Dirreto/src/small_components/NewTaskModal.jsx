@@ -9,6 +9,7 @@ Modal.setAppElement('#root');
 const NewTaskModal = ({ isOpen, onRequestClose }) => {
   const databaseId = '6704fcb7000a5b637f96'; // Adjust your database ID as needed
   const collectionId = '670aff8100268cccd099'; // Adjust your collection ID for tasks
+  const notificationsId = "670c26ba0029b0593bd4"; 
 
   const [name, setName] = useState('');
   const [info, setInfo] = useState('');
@@ -51,6 +52,17 @@ const NewTaskModal = ({ isOpen, onRequestClose }) => {
     };
 
     await createNewDocument(databaseId, collectionId, taskData);
+
+    const project = JSON.parse(localStorage.getItem("project"))
+
+    await createNewDocument(databaseId, notificationsId, 
+      {
+        members: assigneesArray,
+        date: formattedDate,
+        message: "You have been assigned a new task for project " + project.name +  " by " + user_name
+      }
+    )
+
     onRequestClose(true);
   };
 

@@ -1,26 +1,52 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Modal from 'react-modal'; // Optional: if using react-modal
 
 import "../styles/Notifications.css"
 
 import { formatDistanceToNow } from 'date-fns'; // Optional: For better date handling
 
+import { getAllDocuments } from '../lib/appwrite';
+
 
 Modal.setAppElement('#root'); // Required for accessibility if using react-modal
 
 
 const Notifications = ({modalIsOpen, closeModal}) => {
-  // Sample notifications
-  const notifications = [
-    { id: 1, message: "You have a new message from John.", timestamp: new Date(Date.now() - 1000 * 60 * 60 * 3) }, // 3 hours ago
-    { id: 2, message: "Your order has been shipped.", timestamp: new Date(Date.now() - 1000 * 60 * 60 * 24) }, // 1 day ago
-    { id: 3, message: "Update your profile to get more recommendations.", timestamp: new Date(Date.now() - 1000 * 60 * 10) }, // 10 minutes ago
-  ];
+  
+  const databaseId = "6704fcb7000a5b637f96"
+  const collectionId = "670c26ba0029b0593bd4"
 
-  const timeAgo = (timestamp) => {
-    return formatDistanceToNow(new Date(timestamp), { addSuffix: true });
+  const [notifications, setNotifications] = useState([]);
+
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const getNotifcations = async () => {
+      setLoading(true);
+
+      const response = await getAllDocuments(databaseId, collectionId);
+
+      const user_info = JSON.parse(localStorage.getItem("user_info"))
+
+      const user_name = user_info.first_name + " " + user_info.last_name
+
+      setNotifications(response.filter(n => n.members.some(m => m == user_name)))
+
+      setLoading(false);
+    }
+
+    getNotifcations()
+  }, [])
+
+  const timeAgo = (dateString) => {
+    const date = new Date(dateString); // Convert string to Date object
+    return formatDistanceToNow(date, { addSuffix: true });
   };
+  
 
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error.message}</div>;
 
   return (
     <div>
@@ -44,7 +70,7 @@ const Notifications = ({modalIsOpen, closeModal}) => {
                   {notification.message}
                   </h2>
                   <p>
-                  {timeAgo(notification.timestamp)}
+                  {timeAgo(notification.date)}
                   </p>
                 </div>
               </li>
