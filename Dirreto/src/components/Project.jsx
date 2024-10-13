@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import "../styles/Project.css"
 import Navigation2 from "./Navigation2"
-import { createNewDocument, getAllDocuments } from '../lib/appwrite';
+import { createNewDocument, getAllDocuments, updateDocument } from '../lib/appwrite';
 import NewTaskModal from '../small_components/NewTaskModal';
 
 import Notification from '../small_components/Notification';
@@ -79,6 +79,9 @@ const Project = () => {
         fetchDocuments();
       }, [databaseId, collectionId]);
 
+      const user = JSON.parse(localStorage.getItem("user_info"))
+      const user_name = user.first_name + " " + user.last_name
+
       const handleComplete = async () => {
         showNotification("Task marked as completed.")
 
@@ -86,16 +89,20 @@ const Project = () => {
 
         const currentDate = new Date();
 
-        const user = JSON.parse(localStorage.getItem("user_info"))
-        const user_name = user.first_name + " " + user.last_name
-
         await createNewDocument(databaseId, notificationsId, 
-        {
-            members: [main.author],
-            date: currentDate,
-            message: "Task completed at " + project.name +  " by " + user_name
-        }
+            {
+                members: [main.author],
+                date: currentDate,
+                message: "Task completed at " + project.name +  " by " + user_name
+            }
         )
+
+        const { $id, $collectionId, $databaseId, completed, ...document_data } = main;
+
+        await updateDocument(databaseId, collectionId2, main.$id, {
+            ...document_data,
+            completed: [...completed, user_name]
+        })
       }
 
       if (loading) return <div>Loading...</div>;
@@ -169,9 +176,17 @@ const Project = () => {
                 <h2>
                     {main.info}
                 </h2>
-                <button onClick={handleComplete}>
+                <button onClick={handleComplete} className={main.completed.some(m => m == user_name) && `completed`}>
                     <img src="/done2.png"/>
-                    Mark as completed
+                    {
+                        !main.completed.some(m => m == user_name) ?
+                        <>
+                        Mark as completed
+                        </>:
+                        <>
+                        Completed
+                        </>
+                    }
                 </button>
                 </> :
                 <>

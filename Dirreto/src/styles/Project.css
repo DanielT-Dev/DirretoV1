@@ -348,3 +348,7 @@
             margin-right: 3vw;
         }
     }
+    .completed 
+    {
+        background-color: rgb(230, 255, 230) !important;
+    }
