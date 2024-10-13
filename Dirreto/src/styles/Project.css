@@ -184,6 +184,80 @@
         bottom: 0;
         right: 1vw;
     }
+    .project_main h1 
+    {
+        font-size: 1.75vw;
+        font-weight: 400;
+        margin-left: 2vw;
+        margin-bottom: 4vh;
+        color: rgb(50, 50, 50)
+    }
+    .project_main p
+    {
+        font-size: 0.8vw;
+        font-weight: 400;
+        margin-left: 2vw;
+        margin-top: -1.5vh;
+        color: rgb(130, 130, 160)
+    }
+    .project_main h2 
+    {
+        margin-top: 3vh;
+        margin-left: 2vw;
+        font-size: 1vw;
+        font-weight: 400;
+        color: rgb(50, 50, 50);
+        width: 90%;
+        text-align: justify;
+        line-height: 1.5;
+        white-space: pre-line;
+        word-wrap: break-word;
+    }
+    .project_main h3 
+    {
+        display: flex;
+        flex-direction: row;
+        margin-left: 1.5vw;
+        margin-top: 0vh;
+        margin-bottom: 3vh;
+        font-size: 1vw;
+        font-weight: 400;
+        color: rgb(50, 50, 50);
+        width: 90%;
+        text-align: justify;
+        line-height: 1.5;
+        white-space: pre-line;
+        word-wrap: break-word;
+    }
+    .project_main h3 img 
+    {
+        width: 2.5vw;
+        margin-top: -1vh;
+    }
+    .project_main button 
+    {
+        display: flex;
+        flex-direction: row;
+        background-color: rgb(245, 245, 250);
+        border: none;
+        border-radius: 10px;
+        font-size: 1vw;
+        padding: 0.5vw;
+        cursor: pointer;
+        position: absolute;
+        right: 1vw;
+        bottom: 2vh;
+    }
+    .project_main button:hover 
+    {
+        background-color: rgb(230, 230, 240);
+    }
+    .project_main button img 
+    {
+        margin-right: 0.5vw;
+        margin-top: 0.2vh;
+        width: 1vw;
+    }
     @media (max-width: 768px) {
         .project_container 
         {

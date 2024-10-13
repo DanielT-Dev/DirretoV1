@@ -12,6 +12,7 @@ const Project = () => {
     const databaseId = '6704fcb7000a5b637f96';
     const collectionId = '6707fdba000415e265b0';
     const collectionId2 = '670aff8100268cccd099'
+    const collectionId3 = '6705382c003c45dd9f1a'
 
     const [documents, setDocuments] = useState([]);
     const [filteredDocuments, setFilteredDocuments] = useState([]);
@@ -20,6 +21,8 @@ const Project = () => {
     const [error, setError] = useState(null);
 
     const [tasks, setTasks] = useState([]);
+
+    const [main, setMain] = useState({});
 
     useEffect(() => {
         const fetchDocuments = async () => {
@@ -73,7 +76,7 @@ const Project = () => {
                 </div>
                 {
                     tasks.map(a => {
-                        return <div className="project_task">
+                        return <div className="project_task" onClick={() => setMain(a)}>
                             <h4>
                                 P1
                             </h4>
@@ -96,7 +99,36 @@ const Project = () => {
                 
             </div>
             <div className="project_main">
-
+                {
+                    main.name ?
+                    <>
+                <h1>
+                    {main.name}
+                </h1>
+                <h3>
+                    <img src={main.author_image}/>
+                    {main.author}
+                </h3>
+                <p>
+                    Assigned at: {main.date1} 
+                </p>
+                <p>
+                    Date: {main.date2} 
+                </p>
+                <h2>
+                    {main.info}
+                </h2>
+                <button>
+                    <img src="/done2.png"/>
+                    Mark as completed
+                </button>
+                </> :
+                <>
+                <h1>
+                    Select a task to begin
+                </h1>
+                </>
+                }
             </div>
             <div className="project_team">
                 <h1>
