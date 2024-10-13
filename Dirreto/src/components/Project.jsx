@@ -2,11 +2,25 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import "../styles/Project.css"
 import Navigation2 from "./Navigation2"
-import { getAllDocuments } from '../lib/appwrite';
+import { createNewDocument, getAllDocuments } from '../lib/appwrite';
 import NewTaskModal from '../small_components/NewTaskModal';
+
+import Notification from '../small_components/Notification';
 
 const Project = () => {
     const { id } = useParams();
+
+    const [notification, setNotification] = useState({ message: '', type: '' });
+
+    // Function to show a notification
+    const showNotification = (message, type = 'info') => {
+        setNotification({ message, type });
+    };
+
+    // Function to close the notification
+    const closeNotification = () => {
+        setNotification({ message: '', type: '' });
+    };
 
     const [isModalOpen, setModalOpen] = useState(false);
 
@@ -27,6 +41,7 @@ const Project = () => {
     const collectionId = '6707fdba000415e265b0';
     const collectionId2 = '670aff8100268cccd099'
     const collectionId3 = '6705382c003c45dd9f1a'
+    const notificationsId = "670c26ba0029b0593bd4"; 
 
     const [documents, setDocuments] = useState([]);
     const [filteredDocuments, setFilteredDocuments] = useState([]);
@@ -63,6 +78,25 @@ const Project = () => {
         }
         fetchDocuments();
       }, [databaseId, collectionId]);
+
+      const handleComplete = async () => {
+        showNotification("Task marked as completed.")
+
+        const project = JSON.parse(localStorage.getItem("project"))
+
+        const currentDate = new Date();
+
+        const user = JSON.parse(localStorage.getItem("user_info"))
+        const user_name = user.first_name + " " + user.last_name
+
+        await createNewDocument(databaseId, notificationsId, 
+        {
+            members: [main.author],
+            date: currentDate,
+            message: "Task completed at " + project.name +  " by " + user_name
+        }
+        )
+      }
 
       if (loading) return <div>Loading...</div>;
       if (error) return <div>Error: {error.message}</div>;
@@ -135,7 +169,7 @@ const Project = () => {
                 <h2>
                     {main.info}
                 </h2>
-                <button>
+                <button onClick={handleComplete}>
                     <img src="/done2.png"/>
                     Mark as completed
                 </button>
@@ -165,6 +199,12 @@ const Project = () => {
                 
             </div>
             <NewTaskModal isOpen={isModalOpen} onRequestClose={closeModal}/>
+            <Notification
+                message={notification.message}
+                type={notification.type}
+                duration={3000} // optional, default is 3000ms
+                onClose={closeNotification}
+            />
         </div>
     )
 }

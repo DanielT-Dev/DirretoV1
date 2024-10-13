@@ -31,7 +31,7 @@ const Notifications = ({modalIsOpen, closeModal}) => {
 
       const user_name = user_info.first_name + " " + user_info.last_name
 
-      setNotifications(response.filter(n => n.members.some(m => m == user_name)))
+      setNotifications(response.filter(n => n.members.some(m => m == user_name)).sort((a, b) => new Date(b.date) - new Date(a.date)))
 
       setLoading(false);
     }
@@ -39,11 +39,10 @@ const Notifications = ({modalIsOpen, closeModal}) => {
     getNotifcations()
   }, [])
 
-  const timeAgo = (dateString) => {
-    const date = new Date(dateString); // Convert string to Date object
+  const timeAgo = (isoString) => {
+    const date = new Date(isoString); // Convert ISO string to Date object
     return formatDistanceToNow(date, { addSuffix: true });
   };
-  
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
