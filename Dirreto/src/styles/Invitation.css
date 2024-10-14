@@ -55,6 +55,11 @@
     .decline_button:hover {
       background-color: rgb(200, 50, 45);
     }
+    .invitation_card img 
+    {
+      width: 70%;
+      border-radius: 25px;
+    }
   }
   
   /* Desktop styles (min-width: 600px) */
