@@ -352,3 +352,14 @@
     {
         background-color: rgb(230, 255, 230) !important;
     }
+    h6 
+    {
+        position: absolute;
+        bottom: 3vh;
+        left: 0vw;
+        width: 100%;
+        margin: 0;
+        text-align: center;
+        font-size: 0.8vw;
+        color:rgb(140, 235, 140);
+    }

@@ -135,14 +135,27 @@ const Project = () => {
                 {
                     tasks.map(a => {
                         return <div className="project_task" onClick={() => setMain(a)}>
-                            <h4>
-                                P1
-                            </h4>
-                            <h5>
-                                0%
-                            </h5>
+                            {
+                                    !a.completed.some(m => m == user_name) && `completed` &&
+                                    <>
+                                    <h4>
+                                        P1
+                                    </h4>
+                                    <h5>
+                                        0%
+                                    </h5>
+                                    </>       
+                            }
                             <h2>
                                 {a.name}
+
+                                {
+                                    a.completed.some(m => m == user_name) && `completed` &&
+                                    <h6>
+                                        Completed
+                                    </h6>
+                                }
+                                
                             </h2>
                             <h3>
                                 Assigned at: {a.date1}
