@@ -10,6 +10,8 @@ import Notification from '../small_components/Notification';
 const Project = () => {
     const { id } = useParams();
 
+    const [show, setShow] = useState(false)
+
     const [notification, setNotification] = useState({ message: '', type: '' });
 
     // Function to show a notification
@@ -213,10 +215,27 @@ const Project = () => {
                 <h1>
                     Team {filteredDocuments[0].name}
                 </h1>
+                <div className="member" onClick={() => setShow(p => !p)}>
+                    <img src="/add4.png"/>
+                    <p className="member_special">
+                        Invite members
+                    </p>
+                </div>
+                {
+                    show &&
+                    <>
+                        <input 
+                            type="text"
+                            placeholder='Member Email'
+                        />
+                        <button>
+                            Invite
+                        </button>
+                    </>
+                }
                 {
                     filteredDocuments[0].members.map(m => { 
                         return <div className="member">
-                            <img src="/online1.png"/>
                             <p>
                                 {m}
                             </p>

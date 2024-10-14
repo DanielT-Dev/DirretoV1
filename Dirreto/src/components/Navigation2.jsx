@@ -18,6 +18,8 @@ const Navigation2 = () => {
     setModalIsOpen(false);
   };
 
+  const user_info = JSON.parse(localStorage.getItem("user_info"));
+  const user_name = user_info.first_name
 
   return (
     <div className="navigation_container">
@@ -43,7 +45,7 @@ const Navigation2 = () => {
       </p>
       <p onClick={() => navigate('/account')}>
         <img src="/user1.png"/>
-        Daniel Trusca
+        {user_name}
       </p>
       <Notifications modalIsOpen={modalIsOpen} closeModal={closeModal}/>
     </div>

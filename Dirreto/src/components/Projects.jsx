@@ -59,7 +59,7 @@ const Projects = () => {
       
       const response = await getAllDocuments(databaseId, collectionId);
 
-      const user_info = localStorage.getItem("user_info");
+      const user_info = JSON.parse(localStorage.getItem("user_info"));
       const user_name = user_info.first_name + " " + user_info.last_name
 
       console.log(user_name)
@@ -67,8 +67,10 @@ const Projects = () => {
       const teams = await getAllDocuments(databaseId, teamsId)
       const filtered_teams = teams.filter(t => t.members.some(m => m == user_name))
 
+      console.log(filtered_teams)
+
       setDocuments(response)
-      setFilteredDocuments(response.filter(p => filtered_teams.includes(p.team)))
+      setFilteredDocuments(response.filter(p => filtered_teams.some(t => t.name == p.team)))
       setLoading(false);
     }
     fetchDocuments();
