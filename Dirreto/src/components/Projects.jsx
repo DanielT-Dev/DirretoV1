@@ -12,6 +12,7 @@ const Projects = () => {
 
   const databaseId = '6704fcb7000a5b637f96';
   const collectionId = '6705393f00287ff14560';
+  const teamsId = "6707fdba000415e265b0";
 
   const [documents, setDocuments] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -58,8 +59,16 @@ const Projects = () => {
       
       const response = await getAllDocuments(databaseId, collectionId);
 
-      setDocuments(response);
-      setFilteredDocuments(response);
+      const user_info = localStorage.getItem("user_info");
+      const user_name = user_info.first_name + " " + user_info.last_name
+
+      console.log(user_name)
+
+      const teams = await getAllDocuments(databaseId, teamsId)
+      const filtered_teams = teams.filter(t => t.members.some(m => m == user_name))
+
+      setDocuments(response)
+      setFilteredDocuments(response.filter(p => filtered_teams.includes(p.team)))
       setLoading(false);
     }
     fetchDocuments();
