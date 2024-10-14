@@ -1,0 +1,124 @@
+/* Mobile styles (max-width: 600px) */
+@media screen and (max-width: 600px) {
+    .invitation_container {
+      width: 100vw;
+      height: 100vh;
+      background-color: rgb(238, 248, 243);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  
+    .invitation_card {
+      width: 90vw;
+      height: auto;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+      padding: 20px;
+      text-align: center;
+    }
+  
+    .invitation_card h1 {
+      margin-top: 5vh;
+      letter-spacing: 2px;
+    }
+  
+    .button_container {
+      margin-top: 20px;
+    }
+  
+    .invitation_card button {
+      width: 75%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: none;
+      border-radius: 10px;
+      font-size: 2vh;
+      cursor: pointer;
+    }
+  
+    .accept_button {
+      background-color: rgb(5, 140, 97);
+      color: white;
+    }
+  
+    .accept_button:hover {
+      background-color: rgb(0, 115, 80);
+    }
+  
+    .decline_button {
+      background-color: rgb(255, 69, 58);
+      color: white;
+    }
+  
+    .decline_button:hover {
+      background-color: rgb(200, 50, 45);
+    }
+  }
+  
+  /* Desktop styles (min-width: 600px) */
+  @media screen and (min-width: 600px) {
+    .invitation_container {
+      width: 100vw;
+      height: 100vh;
+      background-color: rgb(238, 248, 243);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  
+    .invitation_card {
+      width: 25vw;
+      height: auto;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+      padding: 20px;
+      text-align: center;
+    }
+  
+    .invitation_card h1 {
+      margin-top: 5vh;
+      letter-spacing: 1px;
+      font-size: 1.5vw;
+    }
+    .invitation_card img 
+    {
+      width: 50%;
+      border-radius: 25px;
+    }
+  
+    .button_container {
+      margin-top: 20px;
+    }
+  
+    .invitation_card button {
+      width: 79%;
+      padding: 15px;
+      margin-bottom: 15px;
+      border: none;
+      border-radius: 10px;
+      font-size: 1.1vw;
+      cursor: pointer;
+    }
+  
+    .accept_button {
+      background-color: rgb(5, 140, 97);
+      color: white;
+    }
+  
+    .accept_button:hover {
+      background-color: rgb(0, 115, 80);
+    }
+  
+    .decline_button {
+      background-color: rgb(255, 69, 58);
+      color: white;
+    }
+  
+    .decline_button:hover {
+      background-color: rgb(200, 50, 45);
+    }
+  }
+  

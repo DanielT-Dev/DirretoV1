@@ -84,12 +84,15 @@ const Account = () => {
 
       <div className="account_user">
         <img src={user_info.image}/>
-        <h1>
-          {user_info.first_name} {user_info.last_name}
-        </h1>
-        <p>
-        {user_info.info}
-        </p>
+        <div style={{display: "flex", flexDirection: "column", width: "50%", height: "50%"}}>
+          <h1>
+            {user_info.first_name} {user_info.last_name}
+          </h1>
+          <p>
+          {user_info.info}
+          </p>
+        </div>
+        
         <button 
           onClick={() => logout()}
         >

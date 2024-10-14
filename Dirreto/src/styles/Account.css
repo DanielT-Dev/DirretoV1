@@ -49,15 +49,15 @@
   }
   
   .account_user h1, .account_user p {
-    margin-top: 1vh;
+    margin-left: 0vw;
+    margin-top: 3.75vh;
     font-size: 1.7vw;
     font-weight: 400;
-    text-align: center;
   }
   .account_user p {
+    position: static !important;
     font-size: 1vw;
-    margin-left: 10vw;
-    margin-top: -1vh;
+    margin-top: -1.5vh;
   }
   
   .account_links {

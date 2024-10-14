@@ -55,6 +55,8 @@ const Project = () => {
 
     const [main, setMain] = useState({});
 
+    const [newMember, setNewMember] = useState("");
+
     useEffect(() => {
         const fetchDocuments = async () => {
           setLoading(true);
@@ -105,6 +107,26 @@ const Project = () => {
             ...document_data,
             completed: [...completed, user_name]
         })
+      } 
+
+      const handleInvite = async () => {
+        const project = JSON.parse(localStorage.getItem("project"))
+
+        const currentDate = new Date();
+
+        await createNewDocument(databaseId, notificationsId, 
+            {
+                members: [newMember],
+                date: currentDate,
+                message: user_name + " invited you to join " + project.name,
+                image: project.image,
+                role: "invite"
+            }
+        )
+
+        showNotification("Invite sent to " + newMember)
+        
+        setShow(false);
       }
 
       if (loading) return <div>Loading...</div>;
@@ -226,9 +248,11 @@ const Project = () => {
                     <>
                         <input 
                             type="text"
-                            placeholder='Member Email'
+                            placeholder='Full Name'
+                            value={newMember}
+                            onChange={(e) => setNewMember(e.target.value)}
                         />
-                        <button>
+                        <button onClick={handleInvite}>
                             Invite
                         </button>
                     </>
