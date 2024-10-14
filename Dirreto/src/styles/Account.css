@@ -41,17 +41,23 @@
   }
   
   .account_user img {
-    margin-left: 1vw;
-    margin-top: 1vh;
-    width: 12vw;
-    height: 12vw;
+    margin-left: 3vw;
+    margin-top: 0.5vh;
+    margin-right: 3vw;
+    width: 9vw;
+    height: 9vw;
   }
   
-  .account_user h1 {
-    margin-top: 2vh;
+  .account_user h1, .account_user p {
+    margin-top: 1vh;
     font-size: 1.7vw;
     font-weight: 400;
     text-align: center;
+  }
+  .account_user p {
+    font-size: 1vw;
+    margin-left: 10vw;
+    margin-top: -1vh;
   }
   
   .account_links {

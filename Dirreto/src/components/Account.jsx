@@ -83,7 +83,7 @@ const Account = () => {
       <Navigation2/>
 
       <div className="account_user">
-        <img src="/user_placeholder1.jpg"/>
+        <img src={user_info.image}/>
         <h1>
           {user_info.first_name} {user_info.last_name}
         </h1>
