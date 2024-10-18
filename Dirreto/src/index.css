@@ -8,3 +8,27 @@ body
 {
   --color1: #7E60BF;
 }
+/* For Webkit browsers (Chrome, Safari) */
+::-webkit-scrollbar {
+  width: 12px; /* Width of the scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Background of the scrollbar track */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #e2e2e2; /* Color of the scrollbar */
+  border-radius: 6px; /* Rounded corners of the scrollbar */
+  border: 3px solid #f1f1f1; /* Adds space between the thumb and the track */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Darken the scrollbar when hovered */
+}
+
+/* For Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #e2e2e2 #f1f1f1; /* thumb color and track color */
+}
