@@ -97,7 +97,11 @@ const Project = () => {
             {
                 members: [main.author],
                 date: currentDate,
-                message: "Task completed at " + project.name +  " by " + user_name
+                message: "Task completed at " + project.name +  " by " + user_name,
+                image: user.image,
+                role: "info",
+                team: project.team,
+                project: project.name,
             }
         )
 
@@ -120,7 +124,9 @@ const Project = () => {
                 date: currentDate,
                 message: user_name + " invited you to join " + project.name,
                 image: project.image,
-                role: "invite"
+                role: "invite",
+                team: project.team,
+                project: project.name,
             }
         )
 

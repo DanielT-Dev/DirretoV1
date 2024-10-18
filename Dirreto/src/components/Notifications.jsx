@@ -9,6 +9,8 @@ import { getAllDocuments } from '../lib/appwrite';
 
 import { useNavigate } from 'react-router-dom'
 
+import { client } from '../lib/appwrite';
+
 Modal.setAppElement('#root'); // Required for accessibility if using react-modal
 
 
@@ -27,34 +29,65 @@ const Notifications = ({modalIsOpen, closeModal}) => {
   useEffect(() => {
     const getNotifcations = async () => {
       setLoading(true);
-
+  
       const response = await getAllDocuments(databaseId, collectionId);
-
-      const user_info = JSON.parse(localStorage.getItem("user_info"))
-
-      const user_name = user_info.first_name + " " + user_info.last_name
-
+  
+      const user_info = JSON.parse(localStorage.getItem("user_info"));
+  
+      const user_name = user_info.first_name + " " + user_info.last_name;
+  
       console.log(user_name);
-
-      setNotifications(response.filter(n => n.members.some(m => m.trim() == user_name.trim())).sort((a, b) => new Date(b.date) - new Date(a.date)))
-
+  
+      setNotifications(
+        response
+          .filter((n) =>
+            n.members.some((m) => m.trim() === user_name.trim())
+          )
+          .sort((a, b) => new Date(b.date) - new Date(a.date))
+      );
+  
       setLoading(false);
-    }
-
-    getNotifcations()
-  }, [])
+    };
+  
+    getNotifcations();
+  
+    // Start real-time subscription
+    const unsubscribe = client.subscribe(
+      `databases.${databaseId}.collections.${collectionId}.documents`,
+      (response) => {
+        if (response.events.includes('databases.*.collections.*.documents.*.create')) {
+          const newNotification = response.payload;
+          
+          // Check if the new notification is relevant to the user
+          if (newNotification.members.some(m => m.trim() === user_name.trim())) {
+            setNotifications(prevNotifications => 
+              [newNotification, ...prevNotifications].sort((a, b) => new Date(b.date) - new Date(a.date))
+            );
+          }
+        }
+      }
+    );
+  
+    // Cleanup function to unsubscribe when component unmounts
+    return () => {
+      unsubscribe();
+    };
+  }, []);
+  
 
   const timeAgo = (isoString) => {
     const date = new Date(isoString); // Convert ISO string to Date object
     return formatDistanceToNow(date, { addSuffix: true });
   };
 
-  const go = async (role, message, image) => {
+  const go = async (role, message, image, team, project) => {
     if(role == "invite")
     {
       localStorage.setItem("current_invite_info", JSON.stringify({
         message,
         image,
+        team,
+        project
       }))
       navigate('/invite');
     }
@@ -78,8 +111,8 @@ const Notifications = ({modalIsOpen, closeModal}) => {
         <ul>
           {notifications.length > 0 ? (
             notifications.map((notification) => (
-              <li key={notification.id} onClick={() => go(notification.role, notification.message, notification.image)}>
-                <img src="/user_placeholder1.jpg"/>
+              <li key={notification.id} onClick={() => go(notification.role, notification.message, notification.image, notification.team, notification.project)}>
+                <img src={notification.image ? notification.image : "/user_placeholder1.jpg"}/>
                 <div style={{display: "flex", flexDirection: "column"}}>
                   <h2>
                   {notification.message}
