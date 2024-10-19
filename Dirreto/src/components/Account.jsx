@@ -44,6 +44,7 @@ const Account = () => {
   const [first_name, set_first_name] = useState("")
   const [last_name, set_last_name] = useState("")
   const [info, set_info] = useState("")
+  const [image, set_image] = useState("");
 
   const [user_info, set_user_info] = useState(JSON.parse(localStorage.getItem("user_info")))
 
@@ -55,17 +56,25 @@ const Account = () => {
 
       const { $id, $collectionId, $databaseId, ...document_data } = user_document;
 
+      const fieldsToUpdate = {};
+
+      // Check if each field is not empty before adding it to fieldsToUpdate
+      if (first_name) fieldsToUpdate.first_name = first_name;
+      if (last_name) fieldsToUpdate.last_name = last_name;
+      if (info) fieldsToUpdate.info = info;
+      if (image) fieldsToUpdate.image = image;
+
+      // Merge fieldsToUpdate with the existing document_data
       const result = await updateDocument(
         databaseId,
         collectionId,
         $id,
         {
           ...document_data,
-          first_name,
-          last_name,
-          info,
+          ...fieldsToUpdate,
         }
-      )
+      );
+
 
       localStorage.setItem("user_info", JSON.stringify(result));
 
@@ -144,6 +153,13 @@ const Account = () => {
           onChange={(e) => set_info(e.target.value)}
         >
         </textarea>
+        <br/>
+        <input 
+          type="text"
+          placeholder="Profile Image URL"
+          value={image}
+          onChange={(e) => set_image(e.target.value)}
+        />
         <br/>
         <button onClick={handleChange1}>
           Save

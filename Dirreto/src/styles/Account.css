@@ -46,6 +46,7 @@
     margin-right: 3vw;
     width: 9vw;
     height: 9vw;
+    border-radius: 50%;
   }
   
   .account_user h1, .account_user p {

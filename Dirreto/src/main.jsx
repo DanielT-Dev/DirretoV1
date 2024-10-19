@@ -16,6 +16,7 @@ import { AuthProvider } from './AuthContext';
 import Teams from './components/Teams.jsx';
 import Project from './components/Project.jsx';
 import Invitation from "./components/Invitation.jsx"
+import Overview from './components/Overview.jsx';
 
 
 const router = createBrowserRouter([
@@ -36,6 +37,13 @@ const router = createBrowserRouter([
     element: 
     <ProtectedRoute>
       <Home/>
+    </ProtectedRoute>,
+  },
+  {
+    path: "/overview",
+    element: 
+    <ProtectedRoute>
+      <Overview/>
     </ProtectedRoute>,
   },
   {

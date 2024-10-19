@@ -47,6 +47,7 @@ const Project = () => {
 
     const [documents, setDocuments] = useState([]);
     const [filteredDocuments, setFilteredDocuments] = useState([]);
+    const [filteredUsers, setFilteredUsers] = useState([])
 
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -64,7 +65,7 @@ const Project = () => {
           const response = await getAllDocuments(databaseId, collectionId);
     
           setDocuments(response);
-          
+
           const user = JSON.parse(localStorage.getItem("user_info"))
           const user_name = user.first_name + " " + user.last_name
           
@@ -72,7 +73,16 @@ const Project = () => {
             team.members && team.members.some(member => member === user_name)
           );
 
-          setFilteredDocuments(filtered_response.filter(team => team.name == project_info.team));
+          const a = filtered_response.filter(team => team.name == project_info.team)
+
+          setFilteredDocuments(a);
+
+          const users = await getAllDocuments(databaseId, collectionId3);
+          const filterd_users = users.filter(u => a[0].members.some(m => m == u.first_name + " " + u.last_name))
+
+          console.log(filterd_users)
+          setFilteredUsers(filterd_users)
+
 
           const t = await getAllDocuments(databaseId, collectionId2);
 
@@ -264,10 +274,11 @@ const Project = () => {
                     </>
                 }
                 {
-                    filteredDocuments[0].members.map(m => { 
+                    filteredUsers.map(m => { 
                         return <div className="member">
+                            <img src={m.image.length > 10 ? m.image : "/user_placeholder1.jpg"} style={{scale: "2.3", borderRadius: "50%", marginLeft: "7.5%"}}/>
                             <p>
-                                {m}
+                                {m.first_name + " " + m.last_name}
                             </p>
                         </div>
                         }

@@ -26,7 +26,7 @@ const Navigation2 = () => {
       <h1 onClick={() => navigate('/')}>
         Dirreto
       </h1>
-      <p>
+      <p onClick={() => navigate('/overview')}>
         Overview
       </p>
       <p onClick={() => navigate('/projects')}>
