@@ -32,7 +32,7 @@ const Project = () => {
   
     const closeModal = (success) => {
       if(success)
-        showNotification("Team created successfully.");
+        showNotification("Task created successfully.");
   
       setModalOpen(false);
     };
@@ -76,7 +76,7 @@ const Project = () => {
 
           const t = await getAllDocuments(databaseId, collectionId2);
 
-          setTasks(t.filter(a => a.members.some(member => member === user_name)))
+          setTasks(t.filter(a => a.members.some(member => member === user_name) && a.project == project_info.name))
 
           setLoading(false);
         }

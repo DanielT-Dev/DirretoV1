@@ -40,6 +40,8 @@ const NewTaskModal = ({ isOpen, onRequestClose }) => {
 
     const size = await getAllDocuments(databaseId, collectionId);
 
+    const project = JSON.parse(localStorage.getItem("project"))
+
     const taskData = {
       name: name,
       info,
@@ -49,17 +51,20 @@ const NewTaskModal = ({ isOpen, onRequestClose }) => {
       author: user_name,
       author_image: user_info.image,
       identifier: JSON.stringify(size.length + 1),
+      project: project.name,
     };
 
     await createNewDocument(databaseId, collectionId, taskData);
-
-    const project = JSON.parse(localStorage.getItem("project"))
 
     await createNewDocument(databaseId, notificationsId, 
       {
         members: assigneesArray,
         date: formattedDate,
-        message: "You have been assigned a new task for project " + project.name +  " by " + user_name
+        message: "You have been assigned a new task for project " + project.name +  " by " + user_name,
+        image: user_info.image,
+        role: "info",
+        team: project.team,
+        project: project.name,
       }
     )
 
