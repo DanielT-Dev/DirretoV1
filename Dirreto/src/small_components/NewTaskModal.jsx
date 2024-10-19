@@ -59,7 +59,7 @@ const NewTaskModal = ({ isOpen, onRequestClose }) => {
     await createNewDocument(databaseId, notificationsId, 
       {
         members: assigneesArray,
-        date: formattedDate,
+        date: new Date(),
         message: "You have been assigned a new task for project " + project.name +  " by " + user_name,
         image: user_info.image,
         role: "info",
