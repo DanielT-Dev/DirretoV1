@@ -43,6 +43,7 @@ const NewProjectModal = ({ isOpen, onRequestClose }) => {
         start_date: formattedDate,
         tasks: 0,
         progress: 0,
+        info: "",
       }
     );
     onRequestClose(true);

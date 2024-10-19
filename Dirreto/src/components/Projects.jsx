@@ -136,7 +136,7 @@ const Projects = () => {
             >
               <img 
                 src='/add3.png'
-                style={{width: "30%", marginLeft: "30%", marginTop: "15%", borderRadius: "0"}}
+                style={{width: "30%", marginLeft: "30%", marginTop: "15%", borderRadius: "0", left: "0%"}}
               />
             </div>
 
@@ -146,22 +146,26 @@ const Projects = () => {
                 key={doc.$id}
                 onClick={() => {setProject(doc); navigate('/project/123')}}
               >
-                <img src={doc.image}/>
-                <h1>
-                  {doc.name}
-                </h1>
-                <p>
-                  ({doc.team})
-                </p>
+                <div style={{display: "flex", flexDirection: "row"}}>
+                  <img src={doc.image}/>
+                  <div style={{display: "flex", flexDirection: "column", width: "100%", height: "10vh"}}>
+                    <h1>
+                      {doc.name}
+                    </h1>
+                    <p>
+                      ({doc.team})
+                    </p>
+                  </div>
+                </div>
                 <h2>
-                  Created at: {doc.start_date}
-                </h2>
-                <h2>
-                  Assigned tasks: {doc.tasks}
-                </h2>
-                <h2>
-                  Total progress: {doc.progress} %
-                </h2>
+                    Created at: {doc.start_date}
+                  </h2>
+                  <h2>
+                    Assigned tasks: {doc.tasks}
+                  </h2>
+                  <h2>
+                    Total progress: {doc.progress} %
+                  </h2>
               </div>
             ))}
            
