@@ -101,8 +101,9 @@
   .welcome_art
   {
     position: absolute;
-    right: -10vw;
-    top: -10vh;
-    scale: 0.5;
+    right: -9.5vw;
+    top: -20vh;
+    scale: 0.6;
+    border-radius: 50px;
   }
 }
