@@ -84,7 +84,7 @@
     }
     .sign_up_form h1 
     {
-        margin-top: 5vh;
+        margin-top: 3vh;
         text-align: center;
         letter-spacing: 2px;
     }
@@ -123,8 +123,11 @@
     }
     .sign_up_form p 
     {
-        margin-top: -1.5vh;
+        margin-left: 15%;
+        margin-top: -2vh;
         text-align: center;
         font-size: 0.9vw;
+        width: 70%;
+        color: rgb(150, 150, 150);
     }
 }

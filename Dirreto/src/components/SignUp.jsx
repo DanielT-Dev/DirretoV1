@@ -32,6 +32,9 @@ const SignUp = () => {
             <h1>
                 Dirreto
             </h1>
+            <p>
+                Join Dirreto for free! Fill in the form with your information to get started.
+            </p>
             <input 
                 type="text"
                 placeholder="Username"
