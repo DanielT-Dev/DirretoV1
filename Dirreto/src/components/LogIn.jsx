@@ -9,7 +9,7 @@ import { useAuth } from '../AuthContext';
 
 import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
 
-import jwt_decode from 'jwt-decode';
+import { jwtDecode } from 'jwt-decode';
 
 const LogIn = () => {
 
@@ -45,7 +45,7 @@ const LogIn = () => {
     const handleLoginSuccess = (response) => {
         const token = response.credential;
         // Decode the token to get user info
-        const userInfo = jwt_decode(token);
+        const userInfo = jwtDecode(token);
         console.log("User Info:", userInfo);
         // You can also send this info to your backend here
       };

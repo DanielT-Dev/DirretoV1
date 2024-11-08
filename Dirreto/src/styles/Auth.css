@@ -77,7 +77,6 @@
         left: calc(75vw / 2);
         top: 23vh;
         width: 25vw;
-        height: 26vw;
         background-color: white;
         border-radius: 10px;
         box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
@@ -105,7 +104,7 @@
     {
         margin-left: 9.5%;
         margin-top: 0vh;
-        margin-bottom: 5vh;
+        margin-bottom: 3.5vh;
         width: 79%;
         padding-left: 1vw;
         padding-top: 1.5vh;
@@ -137,4 +136,29 @@
         margin-left: 10%;
         width: 78% !important;
     }
+}
+.error-box {
+    margin-left: 2vw;
+    margin-top: -1vh;
+    color: rgba(220, 30, 30, 0.7);
+    background-color: white;
+    padding: 8px;
+    padding-top: 0px !important;
+    padding-bottom: 12px;
+    font-size: 10px;
+    border-radius: 4px;
+    position: relative;
+    z-index: 10; /* This ensures the error box appears above other elements */
+    width: 80%;
+}
+.error-box svg 
+{
+    position: relative;
+    top: 0.5vh;
+    margin-right: 0.3vw;
+}
+
+.info-link {
+    margin-top: 20px;
+    text-align: center;
 }
