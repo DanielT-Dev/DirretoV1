@@ -7,6 +7,10 @@ import { account, getAllDocuments, ID } from '../lib/appwrite';
 
 import { useAuth } from '../AuthContext';
 
+import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
+
+import jwt_decode from 'jwt-decode';
+
 const LogIn = () => {
 
     const databaseId = '6704fcb7000a5b637f96';
@@ -38,37 +42,63 @@ const LogIn = () => {
             navigate('/projects');
     }
 
+    const handleLoginSuccess = (response) => {
+        const token = response.credential;
+        // Decode the token to get user info
+        const userInfo = jwt_decode(token);
+        console.log("User Info:", userInfo);
+        // You can also send this info to your backend here
+      };
+    
+      const handleLoginFailure = () => {
+        console.log("Login Failed");
+      };
+    
+
   return (
     <div className="sign_up_container">
-        <div className="sign_up_form">
-            <h1>
-                Dirreto
-            </h1>
-            <input 
-                type="text"
-                placeholder="Email"
-                onChange={(e) => setEmail(e.target.value)}
-            />
-            <input 
-                type="password"
-                placeholder="Password"
-                onChange={(e) => setPassword(e.target.value)}
-            />
-            <button
-                onClick={() => handle_login(email, password)}
-            >
-                Log-In
-            </button>
-            <p>
-                Don't have an account?
-            </p>
-            <p 
-                style={{color: "rgb(100, 150, 255)", cursor: "pointer"}}
-                onClick={() => navigate('/sign-up')}
-            >
-                Go to Sign-Up
-            </p>
-        </div>
+        <GoogleOAuthProvider clientId={import.meta.env.VITE_OAUTH_CLIENT_ID}>
+            <div className="sign_up_form">
+                <h1>
+                    Dirreto
+                </h1>
+                <input 
+                    type="text"
+                    placeholder="Email"
+                    onChange={(e) => setEmail(e.target.value)}
+                />
+                <input 
+                    type="password"
+                    placeholder="Password"
+                    onChange={(e) => setPassword(e.target.value)}
+                />
+                <button
+                    onClick={() => handle_login(email, password)}
+                >
+                    Log-In
+                </button>
+                <div className="SSO1">
+                    <p>
+                        Or
+                    </p>
+                    <GoogleLogin
+                        onSuccess={handleLoginSuccess}
+                        onError={handleLoginFailure}
+                        theme="filled_blue"
+                    />
+                </div>
+                
+                <p>
+                    Don't have an account?
+                </p>
+                <p 
+                    style={{color: "rgb(100, 150, 255)", cursor: "pointer"}}
+                    onClick={() => navigate('/sign-up')}
+                >
+                    Go to Sign-Up
+                </p>
+            </div>
+        </GoogleOAuthProvider>
     </div>
   )
 }

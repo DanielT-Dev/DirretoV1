@@ -130,4 +130,11 @@
         width: 70%;
         color: rgb(150, 150, 150);
     }
+    .SSO1
+    {
+        margin-top: -1vh;
+        margin-bottom: 3vh;
+        margin-left: 10%;
+        width: 78% !important;
+    }
 }
