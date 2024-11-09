@@ -1,0 +1,9 @@
+.search_bar_container
+{
+    display: inline-block;
+    width: 30vw !important;
+}
+.search_bar_container input
+{
+    width: 30vw !important;
+}

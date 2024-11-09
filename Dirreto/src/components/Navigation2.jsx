@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import Notifications from "./Notifications"
+import SearchBar from '../small_components/SearchBar'
 
 const Navigation2 = () => {
 
@@ -39,7 +40,8 @@ const Navigation2 = () => {
         Calendar
       </p>
 
-      <p style={{marginLeft: "40vw"}} onClick={openModal}>
+      <SearchBar/>
+      <p onClick={openModal}>
         <img src="/bell1.png"/>
         Notifications
       </p>

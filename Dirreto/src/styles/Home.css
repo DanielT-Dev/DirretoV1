@@ -307,7 +307,7 @@
         gap: 2.5vw;
         grid-template-columns: repeat(4, 1fr);
         position: absolute;
-        left: 24vw;
+        left: 1vw;
         top: 15vh;
         
         border-radius: 10px;
